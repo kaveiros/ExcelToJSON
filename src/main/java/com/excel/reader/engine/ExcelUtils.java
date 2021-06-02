@@ -9,6 +9,7 @@ import com.excel.reader.model.Address;
 import com.excel.reader.model.Aggregation;
 import com.excel.reader.model.ContactDetails;
 import com.excel.reader.model.ExcelToJson;
+import com.excel.reader.model.Geometry;
 import com.excel.reader.model.Location;
 import com.excel.reader.model.Technology;
 import com.excel.reader.model.TechnologyReadiness;
@@ -76,6 +77,7 @@ public class ExcelUtils {
             List<Address> addressList = getAddressesForJson(addressMap);
             Location location = new Location();
             location.setAddressList(addressList);
+            location.setGeometry(new Geometry());
             json.setLocation(location);
             jsonPerRowList.add(json);
            // json.setContactDetails(contactDetailsList);

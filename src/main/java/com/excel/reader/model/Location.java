@@ -1,9 +1,12 @@
 package com.excel.reader.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
+@JsonInclude()
 public class Location {
 
 
@@ -13,6 +16,7 @@ public class Location {
     @JsonProperty("geographic_identifier")
     private String geographicIdentifier;
 
+    @XmlElement(nillable = true)
     @JsonProperty("geometry")
     private Geometry geometry;
 

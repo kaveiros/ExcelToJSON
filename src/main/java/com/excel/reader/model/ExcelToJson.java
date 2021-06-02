@@ -15,6 +15,7 @@ import java.util.List;
 //            "actor_name", "alternative_actor_name", "actor_description", "aggregation", "linked_actor",
 //
 //    })
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class ExcelToJson {
 
     @JsonProperty("actor_classification__id")
@@ -63,11 +64,15 @@ public class ExcelToJson {
     @JsonProperty("location")
     private Location location;
 
-    @JsonProperty("technology")
-    private List<Technology> technologies;
+    @JsonProperty("actor_technology_relationship")
+    private List<ActorTechnologyRelationship> actorTechnologyRelationships;
 
     @JsonProperty("actor_trl_relationship")
     private List<ActorTRLRelationship> actorTRLRelationships;
+
+    @JsonInclude(JsonInclude.Include.ALWAYS)
+    @JsonProperty("actor_catalog_relationship")
+    private List<ActorCatalogRelationship> actorCatalogRelationships;
 
 
     public String getActorName() {
@@ -200,11 +205,12 @@ public class ExcelToJson {
         this.actorIdentifierList = actorIdentifierList;
     }
 
-    public List<Technology> getTechnologies() {
-        return technologies;
+
+    public List<ActorCatalogRelationship> getActorCatalogRelationships() {
+        return actorCatalogRelationships;
     }
 
-    public void setTechnologies(List<Technology> technologies) {
-        this.technologies = technologies;
+    public void setActorCatalogRelationships(List<ActorCatalogRelationship> actorCatalogRelationships) {
+        this.actorCatalogRelationships = actorCatalogRelationships;
     }
 }

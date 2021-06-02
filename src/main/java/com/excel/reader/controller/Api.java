@@ -2,6 +2,7 @@ package com.excel.reader.controller;
 
 import com.excel.reader.ExcelToJson.ExcelRecord;
 import com.excel.reader.ExcelToJson.MappingRecord;
+import com.excel.reader.ExcelToJson.NullSerializer;
 import com.excel.reader.ExcelToJson.RowRecord;
 import com.excel.reader.engine.ExcelReader;
 import com.excel.reader.engine.ExcelUtils;
@@ -9,10 +10,12 @@ import com.excel.reader.input.ExcelMergeRequest;
 import com.excel.reader.input.ExcelRequest;
 import com.excel.reader.model.Actor;
 import com.excel.reader.model.ExcelToJson;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.codehaus.jackson.map.ser.StdSerializerProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +43,13 @@ public class Api {
         long generatedLong = new Random().nextLong();
         actor.setPlatformId(generatedLong);
         actor.setActors(jsonList);
+
+//        StdSerializerProvider sp = new StdSerializerProvider();
+//        NullSerializer nullSerializer = new NullSerializer();
+        //sp.setNullValueSerializer(nullSerializer);
+
         ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.ALWAYS);
         return ResponseEntity.ok(mapper.writeValueAsString(actor));
     }
 
