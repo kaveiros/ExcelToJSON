@@ -11,7 +11,7 @@ import java.util.List;
 public class ActorTechnologyRelationship {
 
 
-    @JsonProperty("actor_technology_relationship")
+    @JsonProperty("technology")
     private List<Technology> technologyList;
 
     public List<Technology> getTechnologyList() {

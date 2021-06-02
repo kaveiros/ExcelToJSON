@@ -233,4 +233,10 @@ public class ExcelUtils {
         addresses.add(address);
         return addresses;
     }
+
+
+    private List<Technology> getTechnologies(RowRecord rowRecord){
+        return null;
+    }
+
 }
